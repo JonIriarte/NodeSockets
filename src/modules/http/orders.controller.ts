@@ -6,13 +6,17 @@ class OrdersController {
 
    @Post('/')
    insertOrder(@Body() order: any) {
-       let orderService = new OrdersService();
+       try {
+        let orderService = new OrdersService();
        orderService.insertOrder(order);
 
        return {
            status: 200,
            success: true
        };
+       } catch (error) {
+        console.log(error); 
+       }
    }
 }
 
